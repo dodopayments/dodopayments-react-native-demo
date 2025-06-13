@@ -2,6 +2,10 @@
 
 A demonstration application showcasing the integration of Dodo Payments SDK in a React Native application for secure payment processing.
 
+- 🎥 Watch our demo video to see the Dodo Payments SDK in action: [Demo Video](https://github.com/dodopayments/dodopayments-react-native-demo/tree/main/demo)
+- 📦 Install our SDK from [NPM](https://www.npmjs.com/package/dodopayments-react-native-sdk)
+- 📚 Read our [Integration Guide](https://docs.dodopayments.com/api-reference/react-native-integration) for detailed documentation
+
 ## Features
 
 - 🔒 Secure payment processing with PCI compliance
