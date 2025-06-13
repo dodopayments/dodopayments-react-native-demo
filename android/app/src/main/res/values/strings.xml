@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">dodopaymentapp</string>
+    <string name="CodePushDeploymentKey">HyperswitchRNDemo</string>
+</resources>
