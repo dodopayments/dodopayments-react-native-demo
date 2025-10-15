@@ -33,14 +33,13 @@ async function createPaymentIntent(request) {
         },
         product_cart: [
           {
-            product_id: 'pdt_TlUFgbsEaoOItJPcmoqMt',
+            product_id: process.env.DODO_PRODUCT_ID || 'your_product_id_here', // Get from: https://app.dodopayments.com/products
             quantity: 1,
           },
         ],
       }),
     });
 
-    console.log(apiResponse);
 
     const paymentIntent = await apiResponse.json();
 
@@ -65,8 +64,8 @@ app.get('/create-payment-intent', async (req, res) => {
   try {
     var {paymentIntent} = await createPaymentIntent();
 
-    // Send publishable key and PaymentIntent details to client
     res.send({
+      publishableKey: process.env.DODO_PUBLISHABLE_KEY || 'your_publishable_key_here',
       clientSecret: paymentIntent.client_secret,
     });
   } catch (err) {
