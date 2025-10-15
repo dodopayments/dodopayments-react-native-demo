@@ -15,9 +15,11 @@ function App(): React.JSX.Element {
 
   const safePadding = '0%';
 
+  const PUBLISHABLE_KEY = 'YOUR_PUBLISHABLE_KEY_HERE'; // Get from: https://app.dodopayments.com/developer/others
+  
   return (
     <DodoPaymentsProvider
-      publishableKey={'process.env.DODOPAYMENTS_TEST_PUBLISHABLE_KEY'}>
+      publishableKey={PUBLISHABLE_KEY}>
       <View style={backgroundStyle}>
         <StatusBar
           barStyle={isDarkMode ? 'light-content' : 'dark-content'}

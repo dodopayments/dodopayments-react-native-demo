@@ -11,7 +11,6 @@ import PolicyInfo from './Components/PolicyInfo';
 import PaymentButtons from './Components/PaymentButtons';
 import PaymentSuccessScreen from './Components/PaymentSuccessScreen';
 
-// Mock data - replace with your actual data
 const MOCK_PRODUCTS = [
   {
     id: '1',
