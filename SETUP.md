@@ -40,7 +40,7 @@ cd server && npm install && cd ..
 ### 2.1 Get API Keys
 
 1. Go to [Dodo Payments Dashboard]
-2. Copy your **Test Mode API Key** (starts with `key_test_...`) (https://app.dodopayments.com/developer/api-keys)
+2. Copy your **Test Mode API Key**  (https://app.dodopayments.com/developer/api-keys)
 3. Copy your **Test Mode Publishable Key** (starts with `pk_test_...`) (https://app.dodopayments.com/developer/others)
 
 ### 2.2 Create a Product
