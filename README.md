@@ -1,6 +1,9 @@
 # Dodo Payments React Native Demo App
 
-A demonstration application showcasing the integration of Dodo Payments SDK in a React Native application for secure payment processing.
+A demonstration application showcasing **two payment integration methods** with Dodo Payments in React Native:
+
+1. **React Native SDK** - Native payment sheet with full customization
+2. **Payment Link (InAppBrowser)** - Hosted checkout page in browser
 
 - 📦 Install our SDK from [NPM](https://www.npmjs.com/package/dodopayments-react-native-sdk)
 - 📚 Read our [Integration Guide](https://docs.dodopayments.com/api-reference/react-native-integration) for detailed documentation.
@@ -13,11 +16,13 @@ A demonstration application showcasing the integration of Dodo Payments SDK in a
 
 ## Features
 
+- 🔄 **Two Payment Flows**: Switch between SDK and Payment Link methods
 - 🔒 Secure payment processing with PCI compliance
 - 💳 Support for multiple payment methods
 - 📱 Native UI components for Android and iOS
 - 🎨 Customizable payment interface
 - 🌓 Light and dark mode support
+- 🔗 Deep linking for payment callbacks
 
 ## Prerequisites
 
@@ -52,44 +57,123 @@ cd ios && pod install && cd ..
 
 ## Configuration
 
-1. Get your publishable key from the [Dodo Payments Dashboard](https://app.dodopayments.com/developer/others)
+### Backend Server Setup
 
-2. Create a `.env` file in the root directory:
+1. Navigate to the server directory and create `.env` file:
 
 ```bash
-DODO_PUBLISHABLE_KEY=your_publishable_key_here
+cd server
+cp .env.example .env
+```
+
+2. Get your credentials from [Dodo Payments Dashboard](https://app.dodopayments.com/developer):
+   - API Key: https://app.dodopayments.com/developer/api-keys
+   - Publishable Key: https://app.dodopayments.com/developer/others
+   - Product ID: https://app.dodopayments.com/products
+
+3. Edit `server/.env` with your credentials:
+
+```env
+DODOPAYMENTS_TEST_API_KEY=key_test_your_api_key_here
+DODO_PUBLISHABLE_KEY=pk_test_your_publishable_key_here
+DODO_PRODUCT_ID=pdt_your_product_id_here
+```
+
+4. Install server dependencies and start:
+
+```bash
+npm install
+npm start
+```
+
+Server will run on `http://localhost:5252`
+
+### Frontend App Configuration
+
+1. Update `App.tsx` with your publishable key (line 9):
+
+```tsx
+const PUBLISHABLE_KEY = 'pk_test_your_publishable_key_here';
+```
+
+2. Configure network settings in `src/config.ts` based on your device:
+
+**For Android Emulator:**
+```typescript
+export const IS_ANDROID_EMULATOR = true;
+```
+
+**For Physical Device:**
+```typescript
+export const IS_ANDROID_EMULATOR = false;
+export const YOUR_COMPUTER_IP = '192.168.1.100'; // Your computer's IP
 ```
 
 ## Running the App
 
-### iOS
+**Important**: Start the backend server first!
 
+1. **Start Backend Server** (in `server/` directory):
+```bash
+cd server
+npm start
+```
+
+2. **Start Metro Bundler** (in root directory):
+```bash
+npm start
+```
+
+3. **Launch App**:
+
+### iOS
 ```bash
 npm run ios
-# or
-yarn ios
 ```
 
 ### Android
-
 ```bash
 npm run android
-# or
-yarn android
 ```
+
+## Using the App
+
+The app features a **bottom tab bar** with two payment methods:
+
+### 1. SDK Payment (Tab 1)
+- Native payment sheet
+- Fully customizable UI
+- Processes payment via React Native SDK
+- Best for production apps
+
+### 2. Payment Link (Tab 2)
+- Opens hosted checkout in InAppBrowser
+- Quick integration, no SDK setup needed
+- Good for testing or fallback option
+- Returns to app via deep linking
 
 ## Project Structure
 
 ```
-dodopaymentdemoapp/
+dodopayments-react-native-demo/
 ├── src/
-│   ├── components/     # Reusable UI components
-│   ├── screens/        # Screen components
-│   ├── utils/          # Utility functions
-│   └── types/          # TypeScript type definitions
-├── ios/               # iOS native code
-├── android/           # Android native code
-└── server/            # Backend server code
+│   ├── Components/           # Reusable UI components
+│   │   ├── PaymentContent.tsx    # Shared payment UI
+│   │   ├── BottomTabBar.tsx      # Tab navigation
+│   │   └── ...
+│   ├── constants/            # Shared constants & data
+│   │   └── mockData.ts           # Product data & calculations
+│   ├── utils/                # Utility functions
+│   ├── PaymentScreen.tsx     # SDK payment flow
+│   ├── PaymentLinkScreen.tsx # InAppBrowser flow
+│   └── config.ts             # Network configuration
+├── server/                   # Backend server
+│   ├── server.js             # Express API server
+│   ├── .env.example          # Environment template
+│   └── package.json
+├── ios/                      # iOS native code
+├── android/                  # Android native code
+└── App.tsx                   # Main app entry
 ```
 
 ## Integration Guide
