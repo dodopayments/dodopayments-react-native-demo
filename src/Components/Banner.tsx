@@ -4,6 +4,7 @@ import {
   Text,
   View,
   useColorScheme,
+  Image,
 } from 'react-native';
 
 const Banner: React.FC = () => {
@@ -12,12 +13,20 @@ const Banner: React.FC = () => {
 
   return (
     <View style={[defaultStyles.container, styles.container]}>
-      <Text style={[defaultStyles.title, styles.title]}>
-        Dodo Payments Demo React Native
-      </Text>
-      <Text style={[defaultStyles.subtitle, styles.subtitle]}>
-        Checkout SDK Demo
-      </Text>
+      <View style={defaultStyles.content}>
+        <Image 
+          source={require('../assets/dodopayments-logo.png')} 
+          style={defaultStyles.logo}
+        />
+        <View style={defaultStyles.textContent}>  
+        <Text style={[defaultStyles.title, styles.title]}>
+          Dodo Payments 
+        </Text>
+        <Text style={[defaultStyles.subtitle, styles.subtitle]}>
+        Demo React Native 
+        </Text>
+        </View>
+      </View>
     </View>
   );
 };
@@ -29,11 +38,25 @@ const defaultStyles = StyleSheet.create({
     alignItems: 'center',
     borderBottomWidth: 1,
   },
+  content: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width : '100%',
+  },
+  textContent: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logo: {
+    width: 40,
+    height: 40,
+    marginRight: 12,
+  },
   title: {
     fontSize: 20,
     fontWeight: '700',
     textAlign: 'center',
-    marginBottom: 4,
   },
   subtitle: {
     fontSize: 16,
