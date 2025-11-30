@@ -9,7 +9,7 @@ A demonstration application showcasing **two payment integration methods** with 
 - 📚 Read our [Integration Guide](https://docs.dodopayments.com/api-reference/react-native-integration) for detailed documentation.
 - 🎥 Watch our demo video to see the Dodo Payments SDK in action.
 
-<a href="https://youtube.com/shorts/uy4vikrKMPI" target="_blank">
+<a href="https://youtu.be/eicctkqK04Y" target="_blank">
     <img src="https://github.com/dodopayments/dodopayments-react-native-demo/blob/main/images/thumbnail.png?raw=true"
       alt="React Native SDK Demo" />
 </a>
